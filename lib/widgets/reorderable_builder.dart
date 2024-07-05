@@ -394,7 +394,7 @@ class _ReorderableBuilderState extends State<ReorderableBuilder>
       reorderableEntity: reorderableEntity,
       currentScrollOffset: _getScrollOffset(),
       lockedIndices: widget.lockedIndices,
-      isScrollableOutside: Scrollable.maybeOf(context)?.position == null,
+      isScrollableOutside: Scrollable.of(context)?.position == null,
     );
     widget.onDragStarted?.call(reorderableEntity.updatedOrderId);
 
@@ -432,7 +432,7 @@ class _ReorderableBuilderState extends State<ReorderableBuilder>
     var offset = globalRenderObject.globalToLocal(globalOffset);
 
     // scrollable part is outside this widget
-    if (Scrollable.maybeOf(context)?.position != null) {
+    if (Scrollable.of(context)?.position != null) {
       offset -= _reorderableController.scrollOffset;
     }
 
@@ -554,7 +554,7 @@ class _ReorderableBuilderState extends State<ReorderableBuilder>
   ///
   /// Otherwise, 0.0 will be returned.
   Offset _getScrollOffset() {
-    var scrollPosition = Scrollable.maybeOf(context)?.position;
+    var scrollPosition = Scrollable.of(context)?.position;
     final scrollController = widget.scrollController;
 
     if (scrollPosition == null &&

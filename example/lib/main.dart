@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_grid_view/widgets/custom_draggable.dart';
 import 'package:flutter_reorderable_grid_view/widgets/reorderable_builder.dart';
@@ -85,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                 if (children.isNotEmpty) {
                   setState(() {
                     // children = children..removeLast();
-                    children.removeAt(0);
+                    children.removeAt(Random().nextInt(children.length));
                   });
                 }
               },
